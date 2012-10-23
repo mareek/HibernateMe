@@ -16,10 +16,10 @@ namespace HibernateMe
         {
             TimeSpan timeOut;
             
-            int timeOutInSeconds;
-            if (int.TryParse(e.Args.FirstOrDefault(), out timeOutInSeconds))
+            int timeOutInMinutes;
+            if (int.TryParse(e.Args.FirstOrDefault(), out timeOutInMinutes))
             {
-                timeOut = TimeSpan.FromSeconds(timeOutInSeconds);
+                timeOut = TimeSpan.FromMinutes(timeOutInMinutes);
             }
             else
             {
