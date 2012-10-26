@@ -22,20 +22,25 @@ namespace HibernateMe
     public partial class MainWindow : Window
     {
         private TimeSpan timeOut;
+        private TimeSpan reminderTime;
         private DateTime limitDate;
+        private DateTime reminderDate;
         private bool lastMinute = false;
 
         private DispatcherTimer refreshTimer;
 
-        public MainWindow(TimeSpan timeOut)
+        public MainWindow(TimeSpan timeOut, TimeSpan reminderTime)
         {
             this.timeOut = timeOut;
+            this.reminderTime = reminderTime;
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             limitDate = DateTime.Now + timeOut;
+            reminderDate = limitDate - reminderTime;
+
             this.Topmost = false;
 
             refreshTimer_Tick(null, null);
@@ -57,7 +62,7 @@ namespace HibernateMe
                 this.Visibility = Visibility.Collapsed;
                 HibernateMe();
             }
-            else if (!lastMinute && (limitDate - DateTime.Now) < timeOut)
+            else if (!lastMinute && reminderDate < DateTime.Now)
             {
                 lastMinute = true;
                 DelayButton.IsEnabled = true;
@@ -81,11 +86,13 @@ namespace HibernateMe
 
         private void DelayButton_Click(object sender, RoutedEventArgs e)
         {
-            limitDate += timeOut;
+            limitDate += reminderTime;
+            reminderDate += reminderTime;
             DelayButton.IsEnabled = false;
             lastMinute = false;
             this.Background = Brushes.White;
             this.CountDownLabel.Foreground = Brushes.Black;
+            this.Topmost = false;
         }
 
         private void HibernateMe()

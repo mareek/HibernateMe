@@ -15,17 +15,22 @@ namespace HibernateMe
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             TimeSpan timeOut;
-            
+            TimeSpan reminderTime;
+
             int timeOutInMinutes;
-            if (int.TryParse(e.Args.FirstOrDefault(), out timeOutInMinutes))
+            int reminderTimeInMinutes;
+            if (int.TryParse(e.Args.FirstOrDefault(), out timeOutInMinutes)
+                && int.TryParse(e.Args.Skip(1).FirstOrDefault(), out reminderTimeInMinutes))
             {
                 timeOut = TimeSpan.FromMinutes(timeOutInMinutes);
+                reminderTime = TimeSpan.FromMinutes(reminderTimeInMinutes);
             }
             else
             {
                 timeOut = TimeSpan.FromMinutes(3);
+                reminderTime = TimeSpan.FromMinutes(1);
             }
-            new MainWindow(timeOut).Show();
+            new MainWindow(timeOut, reminderTime).Show();
         }
     }
 }
