@@ -81,7 +81,7 @@ namespace HibernateMe
                 this.Topmost = false;
             }
 
-            CountDownLabel.Content = string.Format("{0} avant hibenation", (limitDate - DateTime.Now).ToString(@"mm\:ss"));
+            CountDownLabel.Content = string.Format("{0} avant hibernation", (limitDate - DateTime.Now).ToString(@"mm\:ss"));
         }
 
         private void DelayButton_Click(object sender, RoutedEventArgs e)
@@ -97,7 +97,8 @@ namespace HibernateMe
 
         private void HibernateMe()
         {
-            Process.Start("shutdown", "/h /f");
+            var startInfo = new ProcessStartInfo("shutdown", "/h /f") { CreateNoWindow = true };
+            Process.Start(startInfo);
         }
     }
 }
