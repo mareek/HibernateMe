@@ -56,6 +56,11 @@ namespace HibernateMe
             {
                 this.Close();
             }
+            else if ((DateTime.Now - limitDate) > TimeSpan.FromMinutes(5))
+            {
+                //pour éviter un reboot imédiat si on a mis le PC en veille pendant que l'application tournait
+                this.Close();
+            }
             else if (limitDate < DateTime.Now)
             {
                 limitDate = DateTime.MinValue;
@@ -97,7 +102,12 @@ namespace HibernateMe
 
         private void HibernateMe()
         {
-            var startInfo = new ProcessStartInfo("shutdown", "/h /f") { CreateNoWindow = true };
+            var startInfo = new ProcessStartInfo("shutdown", "/h /f")
+            {
+                CreateNoWindow = true,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                UseShellExecute = false
+            };
             Process.Start(startInfo);
         }
     }
