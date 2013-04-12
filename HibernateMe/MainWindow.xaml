@@ -6,14 +6,14 @@
         WindowStartupLocation="CenterScreen"
         Topmost="True"
         WindowStyle="None"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" Icon="Zzz.ico">
     <Border CornerRadius="2" BorderThickness="2" BorderBrush="Black">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <Label x:Name="CountDownLabel" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center">3 minutes avant hibernation</Label>
+            <Label x:Name="CountDownLabel" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center">3:00 avant hibernation</Label>
             <Button x:Name="DelayButton" Grid.Row="1" Margin="3" Padding="2" Click="DelayButton_Click" FontSize="20" IsEnabled="False">Snooze</Button>
         </Grid>
     </Border>
