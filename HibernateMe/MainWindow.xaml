@@ -1,13 +1,17 @@
 ﻿<Window x:Class="HibernateMe.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" 
+		Height="350" 
+		Width="525"
         Loaded="Window_Loaded"
         WindowStartupLocation="CenterScreen"
         Topmost="True"
         WindowStyle="None"
-        ResizeMode="NoResize" Icon="Zzz.ico">
-    <Border CornerRadius="2" BorderThickness="2" BorderBrush="Black">
+        ResizeMode="NoResize" 
+		Background="Transparent"
+		Icon="Zzz.ico">
+    <Border Name="RoundedBorder" CornerRadius="2" BorderThickness="2" BorderBrush="Black" Background="White">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>

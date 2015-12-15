@@ -72,7 +72,7 @@ namespace HibernateMe
                 lastMinute = true;
                 DelayButton.IsEnabled = true;
 
-                this.Background = Brushes.OrangeRed;
+                this.RoundedBorder.Background = Brushes.OrangeRed;
                 this.CountDownLabel.Foreground = Brushes.White;
 
                 this.Topmost = true;
@@ -95,7 +95,7 @@ namespace HibernateMe
             reminderDate += reminderTime;
             DelayButton.IsEnabled = false;
             lastMinute = false;
-            this.Background = Brushes.White;
+            // this.RoundedBorder.Background = Brushes.White;
             this.CountDownLabel.Foreground = Brushes.Black;
             this.Topmost = false;
         }
