@@ -95,7 +95,7 @@ namespace HibernateMe
             reminderDate += reminderTime;
             DelayButton.IsEnabled = false;
             lastMinute = false;
-            // this.RoundedBorder.Background = Brushes.White;
+            this.RoundedBorder.Background = Brushes.White;
             this.CountDownLabel.Foreground = Brushes.Black;
             this.Topmost = false;
         }
